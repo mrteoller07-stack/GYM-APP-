@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitZone - Gym Management & Workout App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans">
+    <!-- Header -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 px-4 py-3 flex justify-between items-center shadow-lg">
+        <div class="flex items-center space-x-2">
+            <div class="bg-indigo-600 text-white p-2 rounded-xl font-black text-xl flex items-center justify-center w-10 h-10 shadow-md shadow-indigo-600/30">
+                <i class="fa-solid fa-dumbbell"></i>
+            </div>
+            <div>
+                <h1 class="font-bold text-lg tracking-wide text-white">FitZone <span class="text-indigo-400 text-xs px-1.5 py-0.5 bg-indigo-950 rounded-full border border-indigo-800">PRO</span></h1>
+                <p class="text-xs text-slate-400">Gym Management & Workout</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="text-xs bg-emerald-950 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-800 font-medium flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Active
+            </span>
+        </div>
+    </header>
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-4xl w-full mx-auto p-4 pb-24 space-y-6">
+        <!-- Dashboard Stats -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl shadow-sm">
+                <div class="text-slate-400 text-xs font-medium mb-1 flex items-center justify-between">
+                    <span>Total Members</span>
+                    <i class="fa-solid fa-users text-indigo-400"></i>
+                </div>
+                <div id="stat-members" class="text-2xl font-black text-white">24</div>
+            </div>
+            <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl shadow-sm">
+                <div class="text-slate-400 text-xs font-medium mb-1 flex items-center justify-between">
+                    <span>Active Plans</span>
+                    <i class="fa-solid fa-bolt text-amber-400"></i>
+                </div>
+                <div class="text-2xl font-black text-white">18</div>
+            </div>
+            <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl shadow-sm">
+                <div class="text-slate-400 text-xs font-medium mb-1 flex items-center justify-between">
+                    <span>Workouts</span>
+                    <i class="fa-solid fa-fire text-rose-400"></i>
+                </div>
+                <div class="text-2xl font-black text-white">12</div>
+            </div>
+            <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl shadow-sm">
+                <div class="text-slate-400 text-xs font-medium mb-1 flex items-center justify-between">
+                    <span>Revenue</span>
+                    <i class="fa-solid fa-wallet text-emerald-400"></i>
+                </div>
+                <div class="text-2xl font-black text-white">₹48k</div>
+            </div>
+        </div>
+
+        <!-- Quick Tabs Navigation -->
+        <div class="flex bg-slate-900 p-1.5 rounded-2xl border border-slate-800 gap-1 overflow-x-auto">
+            <button onclick="switchTab('dashboard')" id="btn-dashboard" class="flex-1 min-w-[90px] py-2.5 px-3 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow transition flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-house"></i> Home
+            </button>
+            <button onclick="switchTab('members')" id="btn-members" class="flex-1 min-w-[90px] py-2.5 px-3 rounded-xl text-xs font-bold text-slate-400 hover:text-white transition flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-user-group"></i> Members
+            </button>
+            <button onclick="switchTab('workouts')" id="btn-workouts" class="flex-1 min-w-[90px] py-2.5 px-3 rounded-xl text-xs font-bold text-slate-400 hover:text-white transition flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-dumbbell"></i> Workouts
+            </button>
+            <button onclick="switchTab('bmi')" id="btn-bmi" class="flex-1 min-w-[90px] py-2.5 px-3 rounded-xl text-xs font-bold text-slate-400 hover:text-white transition flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-calculator"></i> BMI
+            </button>
+        </div>
+
+        <!-- Tab 1: Dashboard View -->
+        <div id="tab-dashboard" class="space-y-4">
+            <div class="bg-gradient-to-r from-indigo-900/40 via-purple-900/30 to-slate-900 border border-indigo-500/20 rounded-3xl p-6 relative overflow-hidden shadow-lg">
+                <div class="relative z-10 space-y-2">
+                    <span class="bg-indigo-500/20 text-indigo-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-indigo-500/30">Welcome Back</span>
+                    <h2 class="text-2xl font-black text-white">Build Your Dream Physique</h2>
+                    <p class="text-sm text-slate-300 max-w-md">Manage your gym members, track customized daily workouts, and monitor body metrics seamlessly.</p>
+                </div>
+            </div>
+            
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5">
+                <h3 class="font-bold text-base mb-3 flex items-center gap-2 text-white">
+                    <i class="fa-solid fa-bullseye text-indigo-400"></i> Today's Focus
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between p-3.5 bg-slate-950/60 rounded-2xl border border-slate-800/80">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-fire"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Chest & Triceps Hypertrophy</h4>
+                                <p class="text-xs text-slate-400">5 Exercises • 45 Mins</p>
+                            </div>
+                        </div>
+                        <span class="text-xs bg-rose-500/10 text-rose-400 px-3 py-1 rounded-full font-semibold border border-rose-500/20">High Intensity</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: Members Management -->
+        <div id="tab-members" class="space-y-4 hidden">
+            <div class="flex justify-between items-center">
+                <h3 class="font-bold text-lg text-white">Gym Members</h3>
+                <button onclick="alert('Add Member feature enabled!')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-lg transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-user-plus"></i> Add Member
+                </button>
+            </div>
+            <div id="members-list" class="space-y-2.5">
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center justify-between">
+                    <div>
+                        <h4 class="font-bold text-sm text-white">Rahul Sharma</h4>
+                        <p class="text-xs text-slate-400">Plan: Muscle Gain (Monthly)</p>
+                    </div>
+                    <span class="text-xs bg-emerald-500/10 text-emerald-400 px-2.5 py-1 rounded-full font-bold border border-emerald-500/20">Active</span>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center justify-between">
+                    <div>
+                        <h4 class="font-bold text-sm text-white">Amit Verma</h4>
+                        <p class="text-xs text-slate-400">Plan: Fat Loss (3 Months)</p>
+                    </div>
+                    <span class="text-xs bg-amber-500/10 text-amber-400 px-2.5 py-1 rounded-full font-bold border border-amber-500/20">Expiring Soon</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 3: Workouts Library -->
+        <div id="tab-workouts" class="space-y-4 hidden">
+            <h3 class="font-bold text-lg text-white">Workout Routines</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl">
+                    <h4 class="font-bold text-base text-white mb-1">Push Day (Chest, Shoulders, Triceps)</h4>
+                    <p class="text-xs text-slate-400 mb-3">Bench Press, Overhead Press, Pushdowns.</p>
+                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-2.5 py-1 rounded-full border border-indigo-500/20">Intermediate</span>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl">
+                    <h4 class="font-bold text-base text-white mb-1">Pull Day (Back, Biceps)</h4>
+                    <p class="text-xs text-slate-400 mb-3">Lat Pulldown, Barbell Rows, Bicep Curls.</p>
+                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-2.5 py-1 rounded-full border border-indigo-500/20">All Levels</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 4: BMI Calculator -->
+        <div id="tab-bmi" class="space-y-4 hidden">
+            <div class="bg-slate-900 border border-slate-800 p-5 rounded-3xl space-y-4">
+                <h3 class="font-bold text-lg text-white flex items-center gap-2">
+                    <i class="fa-solid fa-calculator text-indigo-400"></i> BMI Calculator
+                </h3>
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1 font-medium">Weight (kg)</label>
+                        <input type="number" id="bmi-weight" placeholder="e.g. 70" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1 font-medium">Height (cm)</label>
+                        <input type="number" id="bmi-height" placeholder="e.g. 175" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <button onclick="calculateBMI()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-indigo-600/30">Calculate BMI</button>
+                    <div id="bmi-result" class="text-center font-bold text-sm text-indigo-400 pt-2"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript Script -->
+    <script>
+        function switchTab(tabId) {
+            ['dashboard', 'members', 'workouts', 'bmi'].forEach(id => {
+                document.getElementById('tab-' + id).classList.add('hidden');
+                document.getElementById('btn-' + id).className = 'flex-1 min-w-[90px] py-2.5 px-3 rounded-xl text-xs font-bold text-slate-400 hover:text-white transition flex items-center justify-center gap-1.5';
+            });
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            document.getElementById('btn-' + tabId).className = 'flex-1 min-w-[90px] py-2.5 px-3 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow transition flex items-center justify-center gap-1.5';
+        }
+
+        function calculateBMI() {
+            const w = parseFloat(document.getElementById('bmi-weight').value);
+            const h = parseFloat(document.getElementById('bmi-height').value) / 100;
+            if(!w || !h) {
+                document.getElementById('bmi-result').innerText = "Please enter valid weight and height!";
+                return;
+            }
+            const bmi = (w / (h * h)).toFixed(1);
+            let status = "";
+            if(bmi < 18.5) status = "Underweight";
+            else if(bmi < 25) status = "Normal Weight";
+            else if(bmi < 30) status = "Overweight";
+            else status = "Obese";
+            document.getElementById('bmi-result').innerText = `Your BMI is ${bmi} (${status})`;
+        }
+    </script>
+</body>
+                  </html>
+
+              
